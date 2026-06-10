@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🦞 龙虾军团 Dashboard</title>
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --green:#10b981; --amber:#f59e0b; --purple:#8b5cf6; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; padding:24px; max-width:1100px; margin:0 auto; }
+  header { text-align:center; margin-bottom:32px; }
+  header h1 { font-size:2em; }
+  header p { color:var(--muted); margin-top:4px; }
+  .grid { display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
+  .card { background:var(--card); border-radius:12px; padding:20px; }
+  .card h2 { font-size:1.1em; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .card h2 .count { margin-left:auto; font-size:.85em; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; }
+  th, td { text-align:left; padding:8px 4px; border-bottom:1px solid rgba(255,255,255,0.06); font-size:.9em; }
+  th { color:var(--muted); font-weight:500; }
+  .status-ok { color:var(--green); }
+  .status-off { color:#ef4444; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:999px; font-size:.75em; }
+  .tag-shared { background:rgba(56,189,248,0.15); color:var(--accent); }
+  .tag-private { background:rgba(139,92,246,0.15); color:var(--purple); }
+  .bar { display:flex; height:8px; border-radius:4px; overflow:hidden; margin-top:8px; }
+  .bar .seg { height:100%; }
+  .bar .shared { background:var(--accent); }
+  .bar .private { background:var(--purple); }
+  footer { text-align:center; color:var(--muted); font-size:.8em; margin-top:40px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.06); }
+  .health-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .health-item { padding:10px; border-radius:8px; background:rgba(255,255,255,0.03); }
+  .health-item .label { color:var(--muted); font-size:.8em; }
+  .health-item .value { font-size:1.1em; font-weight:600; margin-top:2px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🦞 龙虾军团</h1>
+  <p>YeChara Engine · 一人公司 Agent 工厂 · 最后备份: 2026-07-14</p>
+</header>
+<div class="grid">
+  <div class="card">
+    <h2>🤖 Agent <span class="count">5</span></h2>
+    <table>
+      <tr><th></th><th>名字</th><th>角色</th><th>模型</th></tr>
+      <tr><td>⚙️</td><td>夜莺</td><td>引擎管理</td><td>GPT-5.5</td></tr>
+      <tr><td>📰</td><td>新消息</td><td>资讯推送</td><td>GPT-5.5</td></tr>
+      <tr><td>🧠</td><td>Claude</td><td>方向判断</td><td>DeepSeek V4</td></tr>
+      <tr><td>🔧</td><td>CodeBuddy</td><td>代码落地</td><td>DeepSeek V4</td></tr>
+      <tr><td>🏭</td><td>超级工厂</td><td>生产管线</td><td>GPT-5.5</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h2>💬 群组 <span class="count">1</span></h2>
+    <div style="margin-bottom:12px;"><strong>🧠 脑暴群</strong><span style="color:var(--muted)"> · 5 人</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;font-size:.85em;">
+      <span style="background:rgba(255,255,255,0.08);padding:4px 10px;border-radius:6px;">👤 yonghu</span>
+      <span style="background:rgba(255,255,255,0.08);padding:4px 10px;border-radius:6px;">⚙️ 夜莺</span>
+      <span style="background:rgba(255,255,255,0.08);padding:4px 10px;border-radius:6px;">🧠 Claude</span>
+      <span style="background:rgba(255,255,255,0.08);padding:4px 10px;border-radius:6px;">🔧 CodeBuddy</span>
+      <span style="background:rgba(255,255,255,0.08);padding:4px 10px;border-radius:6px;">🏭 超级工厂</span>
+    </div>
+    <div style="margin-top:12px;padding:10px;background:rgba(245,158,11,0.1);border-radius:8px;font-size:.85em;">
+      📋 <strong>当前公告:</strong> 开源精华搜刮 — 提升四人能力 (4/4 ✅)
+    </div>
+  </div>
+  <div class="card">
+    <h2>🩺 系统健康</h2>
+    <div class="health-grid">
+      <div class="health-item"><div class="label">Python</div><div class="value" style="color:var(--green)">3.11.9 ✅</div></div>
+      <div class="health-item"><div class="label">引擎状态</div><div class="value" style="color:#ef4444">离线 ⚠️</div></div>
+      <div class="health-item"><div class="label">LLM 主模型</div><div class="value">DeepSeek V4</div></div>
+      <div class="health-item"><div class="label">本地 Fallback</div><div class="value">Gemma 4 12B</div></div>
+      <div class="health-item"><div class="label">上下文窗口</div><div class="value">~200K</div></div>
+      <div class="health-item"><div class="label">Agent 总数</div><div class="value">5 已配置</div></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📚 知识库 <span class="count">71</span></h2>
+    <div style="display:flex;gap:16px;margin-bottom:8px;">
+      <div><span class="tag tag-shared">shared</span> 60</div>
+      <div><span class="tag tag-private">private</span> 11</div>
+    </div>
+    <div class="bar"><div class="seg shared" style="width:85%;"></div><div class="seg private" style="width:15%;"></div></div>
+    <div style="margin-top:12px;font-size:.85em;color:var(--muted);">最新: flova-skill-system-analysis (7/14)</div>
+  </div>
+  <div class="card">
+    <h2>🛠️ 技能库 <span class="count">13</span></h2>
+    <div style="display:flex;gap:16px;margin-bottom:8px;">
+      <div><span class="tag tag-shared">shared</span> 10</div>
+      <div><span class="tag tag-private">private</span> 3</div>
+    </div>
+    <div class="bar"><div class="seg shared" style="width:77%;"></div><div class="seg private" style="width:23%;"></div></div>
+    <div style="margin-top:12px;font-size:.85em;color:var(--muted);">最新: write-a-skill v6 (7/14) · openspec v9 (6/9)</div>
+  </div>
+  <div class="card">
+    <h2>📆 事件记录 <span class="count">13</span></h2>
+    <div style="display:flex;gap:16px;margin-bottom:8px;">
+      <div><span class="tag tag-shared">shared</span> 11</div>
+      <div><span class="tag tag-private">private</span> 2</div>
+    </div>
+    <div style="font-size:.85em;color:var(--muted);line-height:1.8;">
+      5/20 · Agent工厂脑暴与建群<br>
+      5/23 · 超级Skill MVP收敛<br>
+      5/25 · 治愈脚本屋部署<br>
+      5/28 · Anthropic $650亿H轮<br>
+      6/1 · 外部Skill深耕完成<br>
+      6/2 · 首次全链路部署
+    </div>
+  </div>
+</div>
+<footer>🦞 龙虾军团 Dashboard · 自动生成于 2026-07-14 · <a href="https://github.com/zhangamy8289-gif/lobster-backup" style="color:var(--accent);">GitHub</a></footer>
+</body>
+</html>
